@@ -20,7 +20,9 @@ class GameScene: SKScene {
     func addBackgroundLayer(_ layerNumber: Int) {
         let background = SKSpriteNode(imageNamed: "layer\(layerNumber)")
         background.position = CGPoint(x: 590, y: 410)
-//        background.blendMode = .replace
+        if layerNumber == 0 {
+            background.blendMode = .replace
+        }
         background.zPosition = CGFloat(layerNumber)
         addChild(background)
     }
