@@ -10,6 +10,13 @@ import SpriteKit
 class GameScene: SKScene {
     var backgrounds: [SKSpriteNode] = []
     var gameTimer: Timer?
+    var score = 0 {
+        didSet {
+            scoreLabel.text = String(score)
+        }
+    }
+    var scoreLabel: SKLabelNode!
+    
     
     override func didMove(to view: SKView) {
         addBackgroundLayer()
@@ -45,12 +52,18 @@ class GameScene: SKScene {
     }
     
     func buildScore() {
-//        let scoreIcon = SKSpriteNode(imageNamed: "basket")
-//        scoreIcon.position = CGPoint(x: 1020, y: 90)
-//        scoreIcon.zPosition = 4
-//
-//        addChild(scoreIcon)
-
+        let scoreIcon = SKSpriteNode(imageNamed: "basket")
+        scoreIcon.position = CGPoint(x: 1020, y: 90)
+        scoreIcon.zPosition = 4
+        addChild(scoreIcon)
+        
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = "0"
+        scoreLabel.fontSize = 90
+        scoreLabel.horizontalAlignmentMode = .right
+        scoreLabel.zPosition = 5
+        scoreLabel.position = CGPoint(x: 900, y: 60)
+        addChild(scoreLabel)
     }
     
     @objc func createBoard() {
@@ -86,6 +99,11 @@ class GameScene: SKScene {
             $0.position.y < $1.position.y
         }
         boards.first?.hit()
+        if boards.first?.name == "good" {
+            score += 1
+        } else if boards.first?.name == "bad" {
+            score -= 1
+        }
     }
 }
 

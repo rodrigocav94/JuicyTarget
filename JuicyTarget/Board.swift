@@ -22,7 +22,7 @@ class Board: SKNode {
         
         let isEnemy = Bool.random()
         let target = SKSpriteNode(imageNamed: isEnemy ? enemyName : fruitName)
-        board.name = isEnemy ? "bad" : "good"
+        self.name = isEnemy ? "bad" : "good"
         board.addChild(target)
         target.position = CGPoint(x: -10, y: 25)
         node = board
