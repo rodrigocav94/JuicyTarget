@@ -9,6 +9,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     var backgrounds: [SKSpriteNode] = []
+    var hearts: [Heart] = []
     var gameTimer: Timer?
     var score = 0 {
         didSet {
@@ -19,10 +20,11 @@ class GameScene: SKScene {
     
     
     override func didMove(to view: SKView) {
-        addBackgroundLayer()
-        
-        buildScore()
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        
+        setupBackgroundLayers()
+        setupScore()
+        setupLifePoints()
         
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(createBoard), userInfo: nil, repeats: true)
     }
@@ -36,7 +38,7 @@ class GameScene: SKScene {
         }
     }
     
-    func addBackgroundLayer() {
+    func setupBackgroundLayers() {
         for i in 0...3 {
             let background = SKSpriteNode(imageNamed: "layer\(i)")
             background.position = CGPoint(x: 590, y: 410)
@@ -51,7 +53,7 @@ class GameScene: SKScene {
         }
     }
     
-    func buildScore() {
+    func setupScore() {
         let scoreIcon = SKSpriteNode(imageNamed: "basket")
         scoreIcon.position = CGPoint(x: 1020, y: 90)
         scoreIcon.zPosition = 4
@@ -64,6 +66,16 @@ class GameScene: SKScene {
         scoreLabel.zPosition = 5
         scoreLabel.position = CGPoint(x: 900, y: 60)
         addChild(scoreLabel)
+    }
+    
+    func setupLifePoints() {
+        for xPosition in [100, 150, 200] {
+            let heart = Heart()
+            heart.configure(at: CGPoint(x: xPosition, y: 90))
+            heart.zPosition = 4
+            addChild(heart)
+            hearts.append(heart)
+        }
     }
     
     @objc func createBoard() {
@@ -102,7 +114,10 @@ class GameScene: SKScene {
         if boards.first?.name == "good" {
             score += 1
         } else if boards.first?.name == "bad" {
-            score -= 1
+            if !hearts.isEmpty {
+                hearts.last?.lose()
+                hearts.removeLast()
+            }
         }
     }
 }

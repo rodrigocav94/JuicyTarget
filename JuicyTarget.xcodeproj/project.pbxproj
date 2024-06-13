@@ -15,6 +15,7 @@
 		9F9AC74E2C1A422300D4623A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9AC74D2C1A422300D4623A /* Assets.xcassets */; };
 		9F9AC7512C1A422300D4623A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 9F9AC7502C1A422300D4623A /* Base */; };
 		9F9AC7582C1A85E500D4623A /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9AC7572C1A85E500D4623A /* Board.swift */; };
+		9FFC44642C1B880E00747848 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC44632C1B880E00747848 /* Heart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		9F9AC74D2C1A422300D4623A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F9AC7502C1A422300D4623A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F9AC7572C1A85E500D4623A /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		9FFC44632C1B880E00747848 /* Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				9F9AC7402C1A422100D4623A /* AppDelegate.swift */,
 				9F9AC7422C1A422100D4623A /* GameScene.sks */,
 				9F9AC7462C1A422100D4623A /* GameScene.swift */,
+				9FFC44632C1B880E00747848 /* Heart.swift */,
 				9F9AC7572C1A85E500D4623A /* Board.swift */,
 				9F9AC7482C1A422100D4623A /* GameViewController.swift */,
 				9F9AC74A2C1A422100D4623A /* Main.storyboard */,
@@ -145,6 +148,7 @@
 			files = (
 				9F9AC7472C1A422100D4623A /* GameScene.swift in Sources */,
 				9F9AC7492C1A422100D4623A /* GameViewController.swift in Sources */,
+				9FFC44642C1B880E00747848 /* Heart.swift in Sources */,
 				9F9AC7582C1A85E500D4623A /* Board.swift in Sources */,
 				9F9AC7412C1A422100D4623A /* AppDelegate.swift in Sources */,
 			);
