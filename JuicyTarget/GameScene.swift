@@ -17,6 +17,11 @@ class GameScene: SKScene {
         }
     }
     var scoreLabel: SKLabelNode!
+    var gameOver = false {
+        didSet {
+            changeCurtains(gameOver)
+        }
+    }
     
     
     override func didMove(to view: SKView) {
@@ -30,11 +35,18 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        let unreachableNodes = children.filter {
-            $0.position.x < -300 || $0.position.x > 1400
-        }
-        for node in unreachableNodes {
-            node.removeFromParent()
+        let unreachableNodes = children
+            .compactMap {
+                if let board = $0 as? Board {
+                    return board.node
+                }
+                return nil
+            }
+        
+        unreachableNodes.filter {
+            $0.position.x > 1400 || $0.position.x < -100
+        }.forEach {
+            $0.parent?.removeFromParent()
         }
     }
     
@@ -56,6 +68,8 @@ class GameScene: SKScene {
             if !hearts.isEmpty {
                 hearts.last?.lose()
                 hearts.removeLast()
+            } else {
+                endGame()
             }
         }
     }
@@ -64,7 +78,7 @@ class GameScene: SKScene {
 // MARK: - Main Layout Nodes
 extension GameScene {
     func setupBackgroundLayers() {
-        for i in 0...3 {
+        for i in 0...4 {
             let background = SKSpriteNode(imageNamed: "layer\(i)")
             background.position = CGPoint(x: 590, y: 410)
             if i == 0 {
@@ -75,6 +89,10 @@ extension GameScene {
             }
             addChild(background)
             backgrounds.append(background)
+            
+            if i == 4 {
+                background.alpha = 0
+            }
         }
     }
     
@@ -102,9 +120,14 @@ extension GameScene {
             hearts.append(heart)
         }
     }
+    
+    func changeCurtains(_ closingIt: Bool) {
+        let fadeAnimation = SKAction.fadeAlpha(to: closingIt ? 1 : 0, duration: 0.5)
+        backgrounds.last?.run(fadeAnimation)
+    }
 }
 
-// MARK: - Game Loop Nodes
+// MARK: - Game Loop
 extension GameScene {
     @objc func createBoard() {
         let rows = [460, 330, 200]
@@ -125,6 +148,16 @@ extension GameScene {
         
         sprite.node.physicsBody?.velocity = CGVector(dx: direction, dy: 0) // Velocity going from right to left
         sprite.node.physicsBody?.linearDamping = 0 // Movement will not slow down over time
+    }
+    
+    func endGame() {
+        gameOver = true
+        gameTimer?.invalidate()
+        children.compactMap {
+            $0 as? Board
+        }.forEach {
+            $0.removeFromParent()
+        }
     }
 }
 
