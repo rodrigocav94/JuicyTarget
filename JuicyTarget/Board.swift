@@ -33,5 +33,10 @@ class Board: SKNode {
         self.isVisible = false
         node.physicsBody?.velocity = CGVector(dx: 0, dy: -600) // Velocity going downwards.
         node.physicsBody?.linearDamping = -10 // Movement speed will increase slow over time.
+        let delay = SKAction.wait(forDuration: 0.5)
+        let removeItself = SKAction.run { [weak self] in
+            self?.removeFromParent()
+        }
+        node.run(SKAction.sequence([delay, removeItself]))
     }
 }

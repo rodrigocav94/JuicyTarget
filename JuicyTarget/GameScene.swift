@@ -44,7 +44,7 @@ class GameScene: SKScene {
             }
         
         unreachableNodes.filter {
-            $0.position.x > 1400 || $0.position.x < -100
+            $0.position.x > 1500 || $0.position.x < -1500
         }.forEach {
             $0.parent?.removeFromParent()
         }
