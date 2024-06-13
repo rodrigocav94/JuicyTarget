@@ -9,6 +9,7 @@ import SpriteKit
 
 class Board: SKNode {
     var node: SKSpriteNode!
+    var isVisible: Bool = true
     
     func configure(at position: CGPoint) {
         self.position = position
@@ -21,8 +22,16 @@ class Board: SKNode {
         
         let isEnemy = Bool.random()
         let target = SKSpriteNode(imageNamed: isEnemy ? enemyName : fruitName)
+        board.name = isEnemy ? "bad" : "good"
         board.addChild(target)
         target.position = CGPoint(x: -10, y: 25)
         node = board
+    }
+    
+    func hit() {
+        if !isVisible { return }
+        self.isVisible = false
+        node.physicsBody?.velocity = CGVector(dx: 0, dy: -600) // Velocity going downwards.
+        node.physicsBody?.linearDamping = -10 // Movement speed will increase slow over time.
     }
 }

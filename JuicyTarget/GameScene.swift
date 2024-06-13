@@ -73,6 +73,20 @@ class GameScene: SKScene {
         sprite.node.physicsBody?.velocity = CGVector(dx: direction, dy: 0) // Velocity going from right to left
         sprite.node.physicsBody?.linearDamping = 0 // Movement will not slow down over time
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        
+        let location = touch.location(in: self)
+        
+        let objects = nodes(at: location)
+        let boards = objects.compactMap {
+            $0 as? Board
+        }.sorted {
+            $0.position.y < $1.position.y
+        }
+        boards.first?.hit()
+    }
 }
 
 #Preview {
