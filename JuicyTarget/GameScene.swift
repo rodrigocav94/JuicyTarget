@@ -38,6 +38,31 @@ class GameScene: SKScene {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        
+        let location = touch.location(in: self)
+        
+        let objects = nodes(at: location)
+        let boards = objects.compactMap {
+            $0 as? Board
+        }.sorted {
+            $0.position.y < $1.position.y
+        }
+        boards.first?.hit()
+        if boards.first?.name == "good" {
+            score += 1
+        } else if boards.first?.name == "bad" {
+            if !hearts.isEmpty {
+                hearts.last?.lose()
+                hearts.removeLast()
+            }
+        }
+    }
+}
+
+// MARK: - Main Layout Nodes
+extension GameScene {
     func setupBackgroundLayers() {
         for i in 0...3 {
             let background = SKSpriteNode(imageNamed: "layer\(i)")
@@ -77,7 +102,10 @@ class GameScene: SKScene {
             hearts.append(heart)
         }
     }
-    
+}
+
+// MARK: - Game Loop Nodes
+extension GameScene {
     @objc func createBoard() {
         let rows = [460, 330, 200]
         let rowIndex = Int.random(in: 0...2)
@@ -97,28 +125,6 @@ class GameScene: SKScene {
         
         sprite.node.physicsBody?.velocity = CGVector(dx: direction, dy: 0) // Velocity going from right to left
         sprite.node.physicsBody?.linearDamping = 0 // Movement will not slow down over time
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        
-        let location = touch.location(in: self)
-        
-        let objects = nodes(at: location)
-        let boards = objects.compactMap {
-            $0 as? Board
-        }.sorted {
-            $0.position.y < $1.position.y
-        }
-        boards.first?.hit()
-        if boards.first?.name == "good" {
-            score += 1
-        } else if boards.first?.name == "bad" {
-            if !hearts.isEmpty {
-                hearts.last?.lose()
-                hearts.removeLast()
-            }
-        }
     }
 }
 
