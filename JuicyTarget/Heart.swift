@@ -17,11 +17,7 @@ class Heart: SKNode {
         node = board
     }
     
-    func lose() {
-        let scaleDown = SKAction.scale(to: 0, duration: 0.5)
-        let removeItself = SKAction.run { [weak self] in
-            self?.removeFromParent()
-        }
-        node.run(SKAction.sequence([scaleDown, removeItself]))
+    func shrink(reverse: Bool = false) {
+        node.run(SKAction.scale(to: reverse ? 1 : 0, duration: 0.5))
     }
 }

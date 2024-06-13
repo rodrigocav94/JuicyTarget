@@ -9,6 +9,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     var backgrounds: [SKSpriteNode] = []
+    var lifePoints = 3
     var hearts: [Heart] = []
     var gameTimer: Timer?
     var score = 0 {
@@ -52,6 +53,10 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
+        if gameOver {
+            restartGame()
+            return
+        }
         
         let location = touch.location(in: self)
         
@@ -65,9 +70,11 @@ class GameScene: SKScene {
         if boards.first?.name == "good" {
             score += 1
         } else if boards.first?.name == "bad" {
-            if !hearts.isEmpty {
-                hearts.last?.lose()
-                hearts.removeLast()
+            if lifePoints > 0 {
+                lifePoints -= 1
+                if lifePoints >= 0 {
+                    hearts[lifePoints].shrink()
+                }
             } else {
                 endGame()
             }
@@ -158,6 +165,16 @@ extension GameScene {
         }.forEach {
             $0.removeFromParent()
         }
+    }
+    
+    func restartGame() {
+        gameOver = false
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(createBoard), userInfo: nil, repeats: true)
+        lifePoints = 3
+        hearts.forEach {
+            $0.shrink(reverse: true)
+        }
+        score = 0
     }
 }
 
