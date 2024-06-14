@@ -16,6 +16,9 @@
 		9F9AC7512C1A422300D4623A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 9F9AC7502C1A422300D4623A /* Base */; };
 		9F9AC7582C1A85E500D4623A /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9AC7572C1A85E500D4623A /* Board.swift */; };
 		9FFC44642C1B880E00747848 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC44632C1B880E00747848 /* Heart.swift */; };
+		9FFC44682C1BC18D00747848 /* correct.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC44672C1BC18D00747848 /* correct.caf */; };
+		9FFC446C2C1BC1BE00747848 /* incorrect.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC446B2C1BC1BE00747848 /* incorrect.caf */; };
+		9FFC446E2C1BC1F300747848 /* end.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC446D2C1BC1F300747848 /* end.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		9F9AC7502C1A422300D4623A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F9AC7572C1A85E500D4623A /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		9FFC44632C1B880E00747848 /* Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
+		9FFC44672C1BC18D00747848 /* correct.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = correct.caf; sourceTree = "<group>"; };
+		9FFC446B2C1BC1BE00747848 /* incorrect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = incorrect.caf; sourceTree = "<group>"; };
+		9FFC446D2C1BC1F300747848 /* end.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = end.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,17 +67,36 @@
 		9F9AC73F2C1A422100D4623A /* JuicyTarget */ = {
 			isa = PBXGroup;
 			children = (
+				9FFC44662C1BC08100747848 /* Nodes */,
+				9FFC44652C1BC07500747848 /* Assets */,
 				9F9AC7402C1A422100D4623A /* AppDelegate.swift */,
 				9F9AC7422C1A422100D4623A /* GameScene.sks */,
 				9F9AC7462C1A422100D4623A /* GameScene.swift */,
-				9FFC44632C1B880E00747848 /* Heart.swift */,
-				9F9AC7572C1A85E500D4623A /* Board.swift */,
 				9F9AC7482C1A422100D4623A /* GameViewController.swift */,
-				9F9AC74A2C1A422100D4623A /* Main.storyboard */,
-				9F9AC74D2C1A422300D4623A /* Assets.xcassets */,
-				9F9AC74F2C1A422300D4623A /* LaunchScreen.storyboard */,
 			);
 			path = JuicyTarget;
+			sourceTree = "<group>";
+		};
+		9FFC44652C1BC07500747848 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9F9AC74D2C1A422300D4623A /* Assets.xcassets */,
+				9F9AC74A2C1A422100D4623A /* Main.storyboard */,
+				9F9AC74F2C1A422300D4623A /* LaunchScreen.storyboard */,
+				9FFC44672C1BC18D00747848 /* correct.caf */,
+				9FFC446B2C1BC1BE00747848 /* incorrect.caf */,
+				9FFC446D2C1BC1F300747848 /* end.caf */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		9FFC44662C1BC08100747848 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				9F9AC7572C1A85E500D4623A /* Board.swift */,
+				9FFC44632C1B880E00747848 /* Heart.swift */,
+			);
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,10 +157,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FFC446E2C1BC1F300747848 /* end.caf in Resources */,
 				9F9AC7432C1A422100D4623A /* GameScene.sks in Resources */,
 				9F9AC74C2C1A422100D4623A /* Base in Resources */,
 				9F9AC74E2C1A422300D4623A /* Assets.xcassets in Resources */,
 				9F9AC7512C1A422300D4623A /* Base in Resources */,
+				9FFC446C2C1BC1BE00747848 /* incorrect.caf in Resources */,
+				9FFC44682C1BC18D00747848 /* correct.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

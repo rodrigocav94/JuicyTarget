@@ -69,14 +69,17 @@ class GameScene: SKScene {
         boards.first?.hit()
         if boards.first?.name == "good" {
             score += 1
+            run(SKAction.playSoundFileNamed("correct.caf", waitForCompletion: false))
         } else if boards.first?.name == "bad" {
             if lifePoints > 0 {
                 lifePoints -= 1
                 if lifePoints >= 0 {
                     hearts[lifePoints].shrink()
                 }
+                run(SKAction.playSoundFileNamed("incorrect.caf", waitForCompletion: false))
             } else {
                 endGame()
+                run(SKAction.playSoundFileNamed("end.caf", waitForCompletion: true))
             }
         }
     }
