@@ -28,8 +28,15 @@ class GameScene: SKScene {
     var isMuted: Bool = UserDefaults.standard.bool(forKey: "isMuted") {
         didSet {
             UserDefaults.standard.set(isMuted, forKey: "isMuted")
+            mutedButton.texture = SKTexture(imageNamed: isMuted ? "mutedOn" : "mutedOff")
+            if isMuted {
+                backgroundMusic.run(SKAction.pause())
+            } else {
+                backgroundMusic.run(SKAction.play())
+            }
         }
     }
+    var mutedButton: SKSpriteNode!
     
     
     override func didMove(to view: SKView) {
@@ -39,6 +46,7 @@ class GameScene: SKScene {
         setupScore()
         setupLifePoints()
         setupTitle()
+        setupMuteButton()
         playBackgroundMusic()
         
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(createBoard), userInfo: nil, repeats: true)
@@ -62,14 +70,22 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
+        
+        let location = touch.location(in: self)
+        let objects = nodes(at: location)
+        
+        if objects.contains(where: {
+            $0.name == "muted"
+        }) {
+            isMuted.toggle()
+            return
+        }
+        
         if gameOver {
             restartGame()
             return
         }
         
-        let location = touch.location(in: self)
-        
-        let objects = nodes(at: location)
         let boards = objects.compactMap {
             $0 as? Board
         }.sorted {
@@ -151,6 +167,14 @@ extension GameScene {
         }
     }
     
+    func setupMuteButton() {
+        mutedButton = SKSpriteNode(imageNamed: isMuted ? "mutedOn" : "mutedOff")
+        mutedButton.position = CGPoint(x: 1050, y: 720)
+        mutedButton.zPosition = 5
+        mutedButton.name = "muted"
+        addChild(mutedButton)
+    }
+    
     func changeCurtains(_ closingIt: Bool) {
         let fadeAnimation = SKAction.fadeAlpha(to: closingIt ? 1 : 0, duration: 0.5)
         backgrounds.last?.run(fadeAnimation)
@@ -161,14 +185,14 @@ extension GameScene {
             backgroundMusic = SKAudioNode(url: musicURL)
             addChild(backgroundMusic)
             if isMuted {
-                backgroundMusic.run(SKAction.stop())
+                backgroundMusic.run(SKAction.pause())
             }
         }
     }
     
     func playCAF(fileNamed: String) {
         if !isMuted {
-            run(SKAction.playSoundFileNamed("correct.caf", waitForCompletion: false))
+            run(SKAction.playSoundFileNamed(fileNamed, waitForCompletion: false))
         }
     }
 }
