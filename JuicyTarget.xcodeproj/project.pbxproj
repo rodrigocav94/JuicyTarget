@@ -18,8 +18,9 @@
 		9FFC44642C1B880E00747848 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC44632C1B880E00747848 /* Heart.swift */; };
 		9FFC44682C1BC18D00747848 /* correct.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC44672C1BC18D00747848 /* correct.caf */; };
 		9FFC446C2C1BC1BE00747848 /* incorrect.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC446B2C1BC1BE00747848 /* incorrect.caf */; };
-		9FFC446E2C1BC1F300747848 /* end.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC446D2C1BC1F300747848 /* end.caf */; };
 		9FFC44712C1BC82900747848 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC44702C1BC82900747848 /* SKNode+Extensions.swift */; };
+		9FFC44732C1BD0EA00747848 /* bossanova.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC44722C1BD0EA00747848 /* bossanova.mp3 */; };
+		9FFC44752C1BD4CF00747848 /* end.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC44742C1BD4CF00747848 /* end.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +36,9 @@
 		9FFC44632C1B880E00747848 /* Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
 		9FFC44672C1BC18D00747848 /* correct.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = correct.caf; sourceTree = "<group>"; };
 		9FFC446B2C1BC1BE00747848 /* incorrect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = incorrect.caf; sourceTree = "<group>"; };
-		9FFC446D2C1BC1F300747848 /* end.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = end.caf; sourceTree = "<group>"; };
 		9FFC44702C1BC82900747848 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
+		9FFC44722C1BD0EA00747848 /* bossanova.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bossanova.mp3; sourceTree = "<group>"; };
+		9FFC44742C1BD4CF00747848 /* end.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = end.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +90,8 @@
 				9F9AC74F2C1A422300D4623A /* LaunchScreen.storyboard */,
 				9FFC44672C1BC18D00747848 /* correct.caf */,
 				9FFC446B2C1BC1BE00747848 /* incorrect.caf */,
-				9FFC446D2C1BC1F300747848 /* end.caf */,
+				9FFC44722C1BD0EA00747848 /* bossanova.mp3 */,
+				9FFC44742C1BD4CF00747848 /* end.caf */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -168,13 +171,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FFC446E2C1BC1F300747848 /* end.caf in Resources */,
 				9F9AC7432C1A422100D4623A /* GameScene.sks in Resources */,
 				9F9AC74C2C1A422100D4623A /* Base in Resources */,
 				9F9AC74E2C1A422300D4623A /* Assets.xcassets in Resources */,
 				9F9AC7512C1A422300D4623A /* Base in Resources */,
 				9FFC446C2C1BC1BE00747848 /* incorrect.caf in Resources */,
 				9FFC44682C1BC18D00747848 /* correct.caf in Resources */,
+				9FFC44752C1BD4CF00747848 /* end.caf in Resources */,
+				9FFC44732C1BD0EA00747848 /* bossanova.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    var backgroundMusic: SKAudioNode!
     var backgrounds: [SKSpriteNode] = []
     var lifePoints = 3
     var hearts: [Heart] = []
@@ -31,6 +32,7 @@ class GameScene: SKScene {
         setupBackgroundLayers()
         setupScore()
         setupLifePoints()
+        playBackgroundMusic()
         
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(createBoard), userInfo: nil, repeats: true)
     }
@@ -137,6 +139,13 @@ extension GameScene {
     func changeCurtains(_ closingIt: Bool) {
         let fadeAnimation = SKAction.fadeAlpha(to: closingIt ? 1 : 0, duration: 0.5)
         backgrounds.last?.run(fadeAnimation)
+    }
+    
+    func playBackgroundMusic() {
+        if let musicURL = Bundle.main.url(forResource: "bossanova", withExtension: "mp3") {
+            backgroundMusic = SKAudioNode(url: musicURL)
+            addChild(backgroundMusic)
+        }
     }
 }
 
