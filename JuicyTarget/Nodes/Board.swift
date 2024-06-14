@@ -25,6 +25,11 @@ class Board: SKNode {
         self.name = isEnemy ? "bad" : "good"
         board.addChild(target)
         target.position = CGPoint(x: -10, y: 25)
+        let goesToTheRight = position.x <= 0
+        if goesToTheRight {
+            target.xScale = -1.0
+        }
+        
         node = board
         
         board.jiggle(duration: 0.4)
