@@ -19,6 +19,7 @@
 		9FFC44682C1BC18D00747848 /* correct.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC44672C1BC18D00747848 /* correct.caf */; };
 		9FFC446C2C1BC1BE00747848 /* incorrect.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC446B2C1BC1BE00747848 /* incorrect.caf */; };
 		9FFC446E2C1BC1F300747848 /* end.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC446D2C1BC1F300747848 /* end.caf */; };
+		9FFC44712C1BC82900747848 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC44702C1BC82900747848 /* SKNode+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		9FFC44672C1BC18D00747848 /* correct.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = correct.caf; sourceTree = "<group>"; };
 		9FFC446B2C1BC1BE00747848 /* incorrect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = incorrect.caf; sourceTree = "<group>"; };
 		9FFC446D2C1BC1F300747848 /* end.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = end.caf; sourceTree = "<group>"; };
+		9FFC44702C1BC82900747848 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		9F9AC73F2C1A422100D4623A /* JuicyTarget */ = {
 			isa = PBXGroup;
 			children = (
+				9FFC446F2C1BC81A00747848 /* Extensions */,
 				9FFC44662C1BC08100747848 /* Nodes */,
 				9FFC44652C1BC07500747848 /* Assets */,
 				9F9AC7402C1A422100D4623A /* AppDelegate.swift */,
@@ -97,6 +100,14 @@
 				9FFC44632C1B880E00747848 /* Heart.swift */,
 			);
 			path = Nodes;
+			sourceTree = "<group>";
+		};
+		9FFC446F2C1BC81A00747848 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9FFC44702C1BC82900747848 /* SKNode+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 				9FFC44642C1B880E00747848 /* Heart.swift in Sources */,
 				9F9AC7582C1A85E500D4623A /* Board.swift in Sources */,
 				9F9AC7412C1A422100D4623A /* AppDelegate.swift in Sources */,
+				9FFC44712C1BC82900747848 /* SKNode+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

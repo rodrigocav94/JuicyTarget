@@ -26,6 +26,8 @@ class Board: SKNode {
         board.addChild(target)
         target.position = CGPoint(x: -10, y: 25)
         node = board
+        
+        board.jiggle(duration: 0.4)
     }
     
     func hit() {

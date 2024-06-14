@@ -100,6 +100,9 @@ extension GameScene {
             addChild(background)
             backgrounds.append(background)
             
+            if i == 1 || i == 2 {
+                background.jiggle(duration: 1.5 + Double(i))
+            }
             if i == 4 {
                 background.alpha = 0
             }
