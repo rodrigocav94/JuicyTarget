@@ -8,6 +8,7 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    var title: SKSpriteNode!
     var backgroundMusic: SKAudioNode!
     var backgrounds: [SKSpriteNode] = []
     var lifePoints = 3
@@ -32,6 +33,7 @@ class GameScene: SKScene {
         setupBackgroundLayers()
         setupScore()
         setupLifePoints()
+        setupTitle()
         playBackgroundMusic()
         
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(createBoard), userInfo: nil, repeats: true)
@@ -124,6 +126,14 @@ extension GameScene {
         scoreLabel.zPosition = 5
         scoreLabel.position = CGPoint(x: 900, y: 60)
         addChild(scoreLabel)
+    }
+    
+    func setupTitle() {
+        let scoreIcon = SKSpriteNode(imageNamed: "title")
+        scoreIcon.position = CGPoint(x: size.width / 2, y: 700)
+        scoreIcon.setScale(0.7)
+        scoreIcon.zPosition = 4
+        addChild(scoreIcon)
     }
     
     func setupLifePoints() {
